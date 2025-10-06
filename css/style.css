@@ -1,0 +1,208 @@
+:root {
+    --pink:#e84393;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: .2s linear;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    overflow-x: hidden;
+}
+
+
+section {
+    padding: 2rem 9%;
+
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 1rem;
+    border-radius: 5rem;
+    background: violet;
+    color: #fff;
+    padding: .9 rem 3.5rem;
+    font-size: 1.7rem;
+    cursor: pointer;
+}
+
+.btn:hover{
+    background-color: #e84393;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: black;
+    padding: 2rem 9%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 1);
+}
+
+.logo img {
+    width: 80px;
+    height: auto;
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.8);
+    border-radius: 10px;
+}
+
+header .navbar a{
+    font-size: 2rem;
+    padding: 0 1.5rem;
+    color: white;
+}
+
+header .navbar a:hover {
+    color: blue;
+}
+
+header .icons a{
+    font-size: 2.5rem;
+    color: white;
+    margin-left: 1rem;
+}
+
+header #toggler {
+    display: none;
+
+}
+
+header .fa-bars {
+    font-size: 3rem;
+    color: white;
+    border-radius: .5rem;
+    padding: .5rem 1.5rem;
+    cursor: pointer;
+    display: none;
+    border: .1rem solid rgba(0, 0, 0, .3);
+}
+
+.logo-social {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.social {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* ✅ Center text and icons horizontally */
+    gap: 0.5rem;
+}
+
+.social span {
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: wheat; /* Ensure visibility on black header */
+}
+
+.social .icons {
+    display: flex;
+    gap: 0.2rem;
+    color: wheat;
+}
+
+.social .icons a {
+    font-size: 1.4rem;
+    color: white;
+    text-decoration: none;
+}
+
+
+/* media queries */
+
+@media (max-width: 991px) {
+    html {
+        font-size: 55%;
+    }
+    header {
+        padding: 2rem;
+    }
+    section {
+        padding: 2rem;
+    }
+    .home {
+        background-position: left;
+    }
+
+
+}
+
+
+@media (max-width: 768px) {
+    header .fa-bars {
+        display: block;
+    }
+    header .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #eee;
+        border-top: .1rem solid rgba(0, 0, 0, .1) ;
+        clip-path: polygon(0 0 , 100% 0 , 100% 0, 0 0);
+        
+    }
+
+    header #toggler:checked ~ .navbar {
+        clip-path: polygon(0 0 , 100% 0 , 100% 100%, 0 100%);
+    }
+
+    header .navbar a {
+        margin: 1.5rem;
+        padding: 1.5rem;
+        background: #fff;
+        border:1rem solid rgba(0, 0, 0, .1) ;
+        color: black;
+        display: block;
+    }
+    .home .content h3 {
+        font-size: 5rem;
+    }
+    .home .content span {
+        font-size: 2.5rem;
+    }
+
+
+}
+
+.home {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    background: url(../images/wall1.webp) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.home .content {
+    max-width: 50rem;
+}
+
+.home .content h3{
+    font-size: 6rem;
+    color: white;
+}
+
+.home .content span{
+    font-size: 3.5rem;
+    color: wheat;
+    padding: 1rem 0;
+    line-height: 1.5;
+}
