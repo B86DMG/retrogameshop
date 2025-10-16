@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - Retro Game Shop</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+    <script src="../js/app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <input type="checkbox" name="" id="toggler" />
+      <label for="toggler" class="fas fa-bars"></label>
+      <div class="logo-social">
+        <div class="social">
+          <span>Follow us:</span>
+          <div class="icons">
+            <a href="#" class="fab fa-facebook-f"></a>
+            <a href="#" class="fab fa-instagram"></a>
+            <a href="#" class="fab fa-x-twitter"></a>
+          </div>
+        </div>
+        <a href="#" class="logo">
+          <img src="../images/logo.png" alt="" />
+        </a>
+      </div>
+      <nav class="navbar">
+        <a href="../index.html">home</a>
+        <a href="#about">about</a>
+        <a href="#products">products</a>
+        <!-- <a href="#review">review</a> -->
+        <!-- DE VAZUT DACA IL MAI PUN^ -->
+        <a href="#contact">contact</a>
+      </nav>
+      <div class="icons">
+        <a href="#" class="fas fa-heart"></a>
+        <a href="#" class="fas fa-shopping-cart"></a>
+
+        <div class="user-menu">
+          <a href="#" class="fas fa-user" id="user-btn"></a>
+          <div class="dropdown-menu" id="user-dropdown">
+            <a href="admin.html">Admin</a>
+            <a href="#">Profil</a>
+            <a href="#">Logout</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="admin-page">
+      <div class="admin-tabs">
+        <button id="add-tab" class="tab-btn active">Add Product</button>
+        <button id="get-tab" class="tab-btn">View Products</button>
+      </div>
+
+      <!-- Add Product Form -->
+      <section id="add-section" class="admin-section">
+        <h2>Add New Product</h2>
+        <form id="add-product-form">
+          <label>Name: <input type="text" name="nume" required /></label>
+          <label
+            >Category:
+            <select name="categorie">
+              <option value="consoles">Consoles</option>
+              <option value="games">Games</option>
+              <option value="accessories">Accessories</option>
+            </select>
+          </label>
+          <label
+            >Subcategory:
+            <select name="subcategorie">
+              <option value="retro">Retro</option>
+              <option value="modern">Modern</option>
+            </select>
+          </label>
+          <label
+            >Condition:
+            <select name="stare">
+              <option value="nou">Nou</option>
+              <option value="second-hand">Second Hand</option>
+            </select>
+          </label>
+          <label>Price: <input type="number" name="pret" required /></label>
+          <label
+            >Image URL: <input type="text" name="imageURL" required
+          /></label>
+          <button type="submit" class="btn">Add Product</button>
+        </form>
+      </section>
+
+      <!-- View Products -->
+      <section id="get-section" class="admin-section" style="display: none">
+        <h2>All Products</h2>
+        <div id="products-list"></div>
+      </section>
+    </main>
+  </body>
+</html>

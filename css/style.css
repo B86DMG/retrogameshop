@@ -831,3 +831,184 @@ main {
   border: 2px solid orange;
 }
 /*//////////////////*/
+
+/* USER MENU */
+.user-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.user-menu .fa-user {
+  cursor: pointer;
+  color: #fff; /* match your header icons */
+  font-size: 2.5rem; /* same size as cart/heart */
+  transition: color 0.3s ease, transform 0.2s ease;
+  vertical-align: middle;
+}
+
+.user-menu .fa-user:hover {
+  color: #f8f6f5; /* accent color */
+  transform: scale(1.1);
+}
+
+/* Dropdown base (hidden by default) */
+.dropdown-menu {
+  position: absolute;
+  top: 120%;
+  right: 0;
+  background-color: #fff; /* dark background for contrast */
+  border: 1px solid #333;
+  border-radius: 10px;
+  min-width: 180px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  /* border: 2px solid red; */
+  align-content: right;
+
+  /* Animation setup */
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 1000;
+}
+
+/* Show dropdown */
+.dropdown-menu.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Links inside dropdown */
+.user-menu .dropdown-menu a {
+  display: block;
+  width: 100%;
+  padding: 12px 18px;
+  color: #44abbd !important;
+  text-decoration: none;
+  background-color: transparent;
+  font-size: 2rem;
+  letter-spacing: 0.3px;
+  transition: background-color 0.25s ease, padding-left 0.25s ease;
+}
+
+/* Hover + focus effect */
+.dropdown-menu a:hover,
+.dropdown-menu a:focus {
+  background-color: #d1ffe2;
+  color: black;
+  padding-left: 22px;
+}
+
+/* Separator between links */
+.dropdown-menu a + a {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* <<<< USER MENU  */
+
+.icons {
+  display: flex;
+  align-items: center; /* aliniează toate pe mijloc vertical */
+  gap: 15px; /* spațiere între ele */
+  color: white;
+}
+
+/* #user-dropdown a {
+  font-size: 1.9rem;
+  color: black;
+} */
+
+/* <<<<<PRODUCTS */
+
+/* ADMIN>>>>> */
+
+.admin-page {
+  display: flex;
+  flex-direction: column; /* stack tabs and content */
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  padding-top: 150px;
+}
+
+/* Tabs */
+.admin-tabs {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 2rem;
+}
+
+.admin-section {
+  width: 100%;
+  max-width: 900px; /* centers and limits width */
+  background: #fafafa;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Products list inside section */
+#products-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Individual product card (inside get-section) */
+.product-card-admin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+}
+
+/* Buttons inside product card */
+.admin-actions button {
+  margin-left: 0.5rem;
+  padding: 0.3rem 0.6rem;
+  background: #ff3c00;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+}
+
+.admin-actions button:hover {
+  background: #e04b00;
+}
+
+/* Form fields */
+#add-product-form label {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+#add-product-form input,
+#add-product-form select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.3rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.tab-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: lemonchiffon;
+}
+.tab-btn:hover {
+  background-color: lightblue;
+}
+
+.tab-btn:active {
+  background-color: lightsalmon;
+}

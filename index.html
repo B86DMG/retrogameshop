@@ -17,6 +17,7 @@
       href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap"
       rel="stylesheet"
     />
+    <script src="js/app.js" defer></script>
   </head>
   <body>
     <!-- HEADER>>>>> ----->
@@ -37,9 +38,9 @@
         </a>
       </div>
       <nav class="navbar">
-        <a href="#home">home</a>
+        <a href="../index.html">home</a>
         <a href="#about">about</a>
-        <a href="html/products.html">products</a>
+        <a href="#products">products</a>
         <!-- <a href="#review">review</a> -->
         <!-- DE VAZUT DACA IL MAI PUN^ -->
         <a href="#contact">contact</a>
@@ -47,10 +48,17 @@
       <div class="icons">
         <a href="#" class="fas fa-heart"></a>
         <a href="#" class="fas fa-shopping-cart"></a>
-        <a href="#" class="fas fa-user"></a>
+
+        <div class="user-menu">
+          <a href="#" class="fas fa-user" id="user-btn"></a>
+          <div class="dropdown-menu" id="user-dropdown">
+            <a href="html/admin.html">Admin</a>
+            <a href="#">Profil</a>
+            <a href="#">Logout</a>
+          </div>
+        </div>
       </div>
     </header>
-
     <!-- <<<<<HEADER -->
 
     <!-- <<<<<<<HOME -->
