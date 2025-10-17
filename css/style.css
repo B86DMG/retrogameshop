@@ -865,7 +865,7 @@ main {
   flex-direction: column;
   overflow: hidden;
   /* border: 2px solid red; */
-  align-content: right;
+  /* align-items: center; */
 
   /* Animation setup */
   opacity: 0;
@@ -893,6 +893,7 @@ main {
   font-size: 2rem;
   letter-spacing: 0.3px;
   transition: background-color 0.25s ease, padding-left 0.25s ease;
+  text-align: right;
 }
 
 /* Hover + focus effect */
