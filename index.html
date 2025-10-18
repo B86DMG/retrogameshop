@@ -1,143 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Retro Game Shop</title>
-    <!-- font awesome cdn link -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-    />
-    <!-- css link -->
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap"
-      rel="stylesheet"
-    />
-    <script src="js/app.js" defer></script>
-  </head>
-  <body>
-    <!-- HEADER>>>>> ----->
-    <header>
-      <input type="checkbox" name="" id="toggler" />
-      <label for="toggler" class="fas fa-bars"></label>
-      <div class="logo-social">
-        <div class="social">
-          <span>Follow us:</span>
-          <div class="icons">
-            <a href="#" class="fab fa-facebook-f"></a>
-            <a href="#" class="fab fa-instagram"></a>
-            <a href="#" class="fab fa-x-twitter"></a>
-          </div>
-        </div>
-        <a href="#" class="logo">
-          <img src="images/logo.png" alt="" />
-        </a>
-      </div>
-      <nav class="navbar">
-        <a href="index.html">home</a>
-        <a href="#about">about</a>
-        <a href="../retrogameshop/html/">products</a>
-        <!-- <a href="#review">review</a> -->
-        <!-- DE VAZUT DACA IL MAI PUN^ -->
-        <a href="#contact">contact</a>
-      </nav>
-      <div class="icons">
-        <a href="#" class="fas fa-heart"></a>
-        <a href="#" class="fas fa-shopping-cart"></a>
 
-        <div class="user-menu">
-          <a href="#" class="fas fa-user" id="user-btn"></a>
-          <div class="dropdown-menu" id="user-dropdown">
-            <a href="html/admin.html">Admin</a>
-            <a href="admin2.html">Admin2</a>
-            <a href="#">Profil</a>
-            <a href="#">Logout</a>
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Retro Game Shop</title>
+  <!-- font awesome cdn link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+  <!-- css link -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet" />
+  <script src="js/app.js" defer></script>
+</head>
+
+<body>
+  <!-- HEADER>>>>> ----->
+  <header>
+    <input type="checkbox" name="" id="toggler" />
+    <label for="toggler" class="fas fa-bars"></label>
+    <div class="logo-social">
+      <div class="social">
+        <span>Follow us:</span>
+        <div class="icons">
+          <a href="#" class="fab fa-facebook-f"></a>
+          <a href="#" class="fab fa-instagram"></a>
+          <a href="#" class="fab fa-x-twitter"></a>
         </div>
       </div>
-    </header>
-    <!-- <<<<<HEADER -->
+      <a href="#" class="logo">
+        <img src="images/logo.png" alt="" />
+      </a>
+    </div>
+    <nav class="navbar">
+      <a href="index.html">home</a>
+      <a href="#about">about</a>
+      <a href="html/products.html">products</a>
+      <!-- <a href="#review">review</a> -->
+      <!-- DE VAZUT DACA IL MAI PUN^ -->
+      <a href="#contact">contact</a>
+    </nav>
+    <div class="icons">
+      <a href="#" class="fas fa-heart"></a>
+      <a href="#" class="fas fa-shopping-cart"></a>
 
-    <!-- <<<<<<<HOME -->
-    <div class="scroll-wrapper">
-      <section class="home snap-section" id="home">
+      <div class="user-menu">
+        <a href="#" class="fas fa-user" id="user-btn"></a>
+        <div class="dropdown-menu" id="user-dropdown">
+          <a href="html/admin.html">Admin</a>
+          <a href="admin2.html">Admin2</a>
+          <a href="#">Profil</a>
+          <a href="#">Logout</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- <<<<<HEADER -->
+
+  <!-- <<<<<<<HOME -->
+  <div class="scroll-wrapper">
+    <section class="home snap-section" id="home">
+      <div class="content">
+        <h3>Retro Game Shop</h3>
+        <span>Jocuri si accesorii din alta epoca</span>
+        <!-- <span>PC</span> -->
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita
+          voluptates iusto assumenda cumque aperiam! Sed, reprehenderit. Hic
+          quis maiores rem nesciunt id quod et deserunt, ipsa ratione? Earum,
+          autem eius?
+        </p>
+        <a href="#" class="btn">Cumpara Acum</a>
+      </div>
+      <div class="category-grid">
+        <div class="category-item jocuri">
+          <img src="images/jocuri.png" alt="Jocuri" />
+          <div class="overlay">
+            <h3>JOCURI</h3>
+          </div>
+        </div>
+
+        <div class="category-item colectii">
+          <img src="images/colectionabile.png" alt="Colectii" />
+          <div class="overlay">
+            <h3>COLECTIONABILE</h3>
+          </div>
+        </div>
+
+        <div class="category-item hardware">
+          <img src="images/hardware.png" alt="Hardware" />
+          <div class="overlay">
+            <h3>HARDWARE</h3>
+          </div>
+        </div>
+
+        <div class="category-item imbracaminte">
+          <img src="images/imbracaminte.png" alt="Imbracaminte" />
+          <div class="overlay">
+            <h3>IMBRACAMINTE</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- <<<<<<HOME -->
+
+    <!-- ABOUT>>>>>>>> -->
+
+    <section class="about snap-section" id="about">
+      <h1 class="heading"><span>About</span>Us</h1>
+
+      <div class="row">
+        <div class="video-container">
+          <video src="images\videoplayback.mp4" loop autoplay muted></video>
+          <h3>RETRO GAME SHOP</h3>
+        </div>
+
         <div class="content">
-          <h3>Retro Game Shop</h3>
-          <span>Jocuri si accesorii din alta epoca</span>
-          <!-- <span>PC</span> -->
+          <h3>De ce noi</h3>
           <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita
-            voluptates iusto assumenda cumque aperiam! Sed, reprehenderit. Hic
-            quis maiores rem nesciunt id quod et deserunt, ipsa ratione? Earum,
-            autem eius?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
+            quibusdam veritatis nostrum architecto quas dolorum possimus in.
+            Placeat quos facere dolorem. Maxime labore atque autem iste amet
+            nostrum totam esse?
           </p>
-          <a href="#" class="btn">Cumpara Acum</a>
+          <a href="#" class="btn">Afla mai multe</a>
         </div>
-        <div class="category-grid">
-          <div class="category-item jocuri">
-            <img src="images/jocuri.png" alt="Jocuri" />
-            <div class="overlay">
-              <h3>JOCURI</h3>
-            </div>
-          </div>
+      </div>
+    </section>
 
-          <div class="category-item colectii">
-            <img src="images/colectionabile.png" alt="Colectii" />
-            <div class="overlay">
-              <h3>COLECTIONABILE</h3>
-            </div>
-          </div>
+    <!-- <<<<<<<<<<ABOUT -->
 
-          <div class="category-item hardware">
-            <img src="images/hardware.png" alt="Hardware" />
-            <div class="overlay">
-              <h3>HARDWARE</h3>
-            </div>
-          </div>
-
-          <div class="category-item imbracaminte">
-            <img src="images/imbracaminte.png" alt="Imbracaminte" />
-            <div class="overlay">
-              <h3>IMBRACAMINTE</h3>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- <<<<<<HOME -->
-
-      <!-- ABOUT>>>>>>>> -->
-
-      <section class="about snap-section" id="about">
-        <h1 class="heading"><span>About</span>Us</h1>
-
-        <div class="row">
-          <div class="video-container">
-            <video src="images\videoplayback.mp4" loop autoplay muted></video>
-            <h3>RETRO GAME SHOP</h3>
-          </div>
-
-          <div class="content">
-            <h3>De ce noi</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
-              quibusdam veritatis nostrum architecto quas dolorum possimus in.
-              Placeat quos facere dolorem. Maxime labore atque autem iste amet
-              nostrum totam esse?
-            </p>
-            <a href="#" class="btn">Afla mai multe</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- <<<<<<<<<<ABOUT -->
-
-      <!-- ICONS>>>>> -->
-      <!-- <section class="icons-container">
+    <!-- ICONS>>>>> -->
+    <!-- <section class="icons-container">
     <div class="icons">
         <img src="" alt="">
         <div class="info">
@@ -175,126 +171,124 @@
 
 </section> -->
 
-      <!-- <<<<<<ICONS -->
+    <!-- <<<<<<ICONS -->
 
-      <!-- PRODUCTS>>>> -->
+    <!-- PRODUCTS>>>> -->
 
-      <section class="products snap-section" id="products">
-        <h1 class="heading">lastest <span>products</span></h1>
-        <div class="box-container">
-          <div class="box">
-            <span class="discount">-10%</span>
-            <div class="image">
-              <img src="product_img/Homm3boxart.jpg" alt="" />
-              <div class="icons">
-                <a href="" class="fas fa-heart"></a>
-                <a href="" class="cart-btn">adauga in cos</a>
-                <a href="" class="fas fa-share"></a>
-              </div>
-            </div>
-            <div class="content">
-              <h3>Heroes 3 of Might and Magic</h3>
-              <div class="price">120 lei<span>150 lei</span></div>
+    <section class="products snap-section" id="products">
+      <h1 class="heading">lastest <span>products</span></h1>
+      <div class="box-container">
+        <div class="box">
+          <span class="discount">-10%</span>
+          <div class="image">
+            <img src="product_img/Homm3boxart.jpg" alt="" />
+            <div class="icons">
+              <a href="" class="fas fa-heart"></a>
+              <a href="" class="cart-btn">adauga in cos</a>
+              <a href="" class="fas fa-share"></a>
             </div>
           </div>
-
-          <div class="box">
-            <span class="discount">-20%</span>
-            <div class="image">
-              <img
-                src="product_img/Age_of_Empires_II_-_The_Age_of_Kings_Coverart.png"
-                alt=""
-              />
-              <div class="icons">
-                <a href="" class="fas fa-heart"></a>
-                <a href="" class="cart-btn">adauga in cos</a>
-                <a href="" class="fas fa-share"></a>
-              </div>
-            </div>
-            <div class="content">
-              <h3>Age of Empires 2</h3>
-              <div class="price">100 lei<span>120 lei</span></div>
-            </div>
-          </div>
-
-          <div class="box">
-            <span class="discount">-10%</span>
-            <div class="image">
-              <img src="product_img/Colin2.jpg" alt="" />
-              <div class="icons">
-                <a href="" class="fas fa-heart"></a>
-                <a href="" class="cart-btn">adauga in cos</a>
-                <a href="" class="fas fa-share"></a>
-              </div>
-            </div>
-            <div class="content">
-              <h3>Colin McRae Rally 2</h3>
-              <div class="price">160 lei<span>180 lei</span></div>
-            </div>
-          </div>
-          <div class="box">
-            <span class="discount">-10%</span>
-            <div class="image">
-              <img src="product_img/Diablo_II_Coverart.png" alt="" />
-              <div class="icons">
-                <a href="" class="fas fa-heart"></a>
-                <a href="" class="cart-btn">adauga in cos</a>
-                <a href="" class="fas fa-share"></a>
-              </div>
-            </div>
-            <div class="content">
-              <h3>Diablo 2</h3>
-              <div class="price">110 lei<span>130 lei</span></div>
-            </div>
-          </div>
-          <div class="box">
-            <span class="discount">-10%</span>
-            <div class="image">
-              <img src="product_img/SimCity_2000_Coverart.png" alt="" />
-              <div class="icons">
-                <a href="" class="fas fa-heart"></a>
-                <a href="" class="cart-btn">adauga in cos</a>
-                <a href="" class="fas fa-share"></a>
-              </div>
-            </div>
-            <div class="content">
-              <h3>SimCity 200</h3>
-              <div class="price">100 lei<span>120 lei</span></div>
-            </div>
-          </div>
-          <div class="box">
-            <span class="discount">-10%</span>
-            <div class="image">
-              <img src="product_img/StarCraft_box_art.jpg" alt="" />
-              <div class="icons">
-                <a href="" class="fas fa-heart"></a>
-                <a href="" class="cart-btn">adauga in cos</a>
-                <a href="" class="fas fa-share"></a>
-              </div>
-            </div>
-            <div class="content">
-              <h3>StarCraft Broodwar</h3>
-              <div class="price">130 lei<span>140 lei</span></div>
-            </div>
-          </div>
-          <div class="box">
-            <span class="discount">-10%</span>
-            <div class="image">
-              <img src="product_img/street-fighter-ii-jap-e50920.jpg" alt="" />
-              <div class="icons">
-                <a href="" class="fas fa-heart"></a>
-                <a href="" class="cart-btn">adauga in cos</a>
-                <a href="" class="fas fa-share"></a>
-              </div>
-            </div>
-            <div class="content">
-              <h3>Street Fighter 2</h3>
-              <div class="price">140 lei<span>180 lei</span></div>
-            </div>
+          <div class="content">
+            <h3>Heroes 3 of Might and Magic</h3>
+            <div class="price">120 lei<span>150 lei</span></div>
           </div>
         </div>
-      </section>
-    </div>
-    <!-- <<<<<PRODUCTS -->
-  </body>
+
+        <div class="box">
+          <span class="discount">-20%</span>
+          <div class="image">
+            <img src="product_img/Age_of_Empires_II_-_The_Age_of_Kings_Coverart.png" alt="" />
+            <div class="icons">
+              <a href="" class="fas fa-heart"></a>
+              <a href="" class="cart-btn">adauga in cos</a>
+              <a href="" class="fas fa-share"></a>
+            </div>
+          </div>
+          <div class="content">
+            <h3>Age of Empires 2</h3>
+            <div class="price">100 lei<span>120 lei</span></div>
+          </div>
+        </div>
+
+        <div class="box">
+          <span class="discount">-10%</span>
+          <div class="image">
+            <img src="product_img/Colin2.jpg" alt="" />
+            <div class="icons">
+              <a href="" class="fas fa-heart"></a>
+              <a href="" class="cart-btn">adauga in cos</a>
+              <a href="" class="fas fa-share"></a>
+            </div>
+          </div>
+          <div class="content">
+            <h3>Colin McRae Rally 2</h3>
+            <div class="price">160 lei<span>180 lei</span></div>
+          </div>
+        </div>
+        <div class="box">
+          <span class="discount">-10%</span>
+          <div class="image">
+            <img src="product_img/Diablo_II_Coverart.png" alt="" />
+            <div class="icons">
+              <a href="" class="fas fa-heart"></a>
+              <a href="" class="cart-btn">adauga in cos</a>
+              <a href="" class="fas fa-share"></a>
+            </div>
+          </div>
+          <div class="content">
+            <h3>Diablo 2</h3>
+            <div class="price">110 lei<span>130 lei</span></div>
+          </div>
+        </div>
+        <div class="box">
+          <span class="discount">-10%</span>
+          <div class="image">
+            <img src="product_img/SimCity_2000_Coverart.png" alt="" />
+            <div class="icons">
+              <a href="" class="fas fa-heart"></a>
+              <a href="" class="cart-btn">adauga in cos</a>
+              <a href="" class="fas fa-share"></a>
+            </div>
+          </div>
+          <div class="content">
+            <h3>SimCity 200</h3>
+            <div class="price">100 lei<span>120 lei</span></div>
+          </div>
+        </div>
+        <div class="box">
+          <span class="discount">-10%</span>
+          <div class="image">
+            <img src="product_img/StarCraft_box_art.jpg" alt="" />
+            <div class="icons">
+              <a href="" class="fas fa-heart"></a>
+              <a href="" class="cart-btn">adauga in cos</a>
+              <a href="" class="fas fa-share"></a>
+            </div>
+          </div>
+          <div class="content">
+            <h3>StarCraft Broodwar</h3>
+            <div class="price">130 lei<span>140 lei</span></div>
+          </div>
+        </div>
+        <div class="box">
+          <span class="discount">-10%</span>
+          <div class="image">
+            <img src="product_img/street-fighter-ii-jap-e50920.jpg" alt="" />
+            <div class="icons">
+              <a href="" class="fas fa-heart"></a>
+              <a href="" class="cart-btn">adauga in cos</a>
+              <a href="" class="fas fa-share"></a>
+            </div>
+          </div>
+          <div class="content">
+            <h3>Street Fighter 2</h3>
+            <div class="price">140 lei<span>180 lei</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- <<<<<PRODUCTS -->
+</body>
+
 </html>
