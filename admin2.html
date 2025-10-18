@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product List</title>
+    <link rel="stylesheet" href="css/style2.css" />
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <form id="product-form">
+        <input type="text" id="name" placeholder="Product Name" required />
+        <input type="text" id="price" placeholder="Price" required />
+        <input type="url" id="imageURL" placeholder="Image URL" required />
+        <input type="text" id="description" placeholder="Description" required />
+        <button id="add-btn" class="btn add">Add Product</button>
+    </form>
+    <div class="container">
+        <h1>Product List</h1>
+        <button id="add-btn" class="btn add">Add Product</button>
+        <table id="products-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Products will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+    <script src="admin.js"></script>
+</body>
+
+</html>
