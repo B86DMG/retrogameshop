@@ -3,7 +3,15 @@ window.addEventListener("DOMContentLoaded", renderTable);
 const URL = "https://68e3eecf8e116898997a7c31.mockapi.io/products";
 
 const tableBody = document.querySelector("#products-table tbody");
-const addBtn = document.querySelector("#add-btn");
+const addOrEditBtn = document.querySelector("#add-btn");
+
+const numeInput = document.getElementById("nume");
+const pretInput = document.getElementById("pret");
+const imageURLInput = document.getElementById("imageURL");
+const descriptionInput = document.getElementById("description");
+
+let isEditMode = false;
+let productID;
 
 function renderTable() {
   fetch(URL)
@@ -19,7 +27,7 @@ function renderTable() {
               <img src="${product.imageURL}" alt="${product.nume}" />
             </td>
             <td class="cell-name">${product.nume}</td>
-            <td class="cell-price">$${product.pret}</td>
+            <td class="cell-price">${product.pret} Lei</td>
             <td>
               <div class="actions">
                 <button class="btn edit" data-action="edit">
@@ -41,9 +49,9 @@ function renderTable() {
     });
 }
 
-addBtn.addEventListener("click", addNewProduct);
+addOrEditBtn.addEventListener("click", addOrEditNewProduct);
 
-function addNewProduct(e) {
+function addOrEditNewProduct(e) {
   e.preventDefault();
 
   const nume = document.getElementById("nume").value;
@@ -65,8 +73,12 @@ function addNewProduct(e) {
     cantitate,
   };
 
-  fetch(URL, {
-    method: "POST",
+  const method = isEditMode ? 'PUT' : 'POST';
+  const newURL = isEditMode ? `${URL}/${productID}` : URL;
+
+
+  fetch(newURL, {
+    method: method,
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(newProduct),
   })
@@ -78,7 +90,7 @@ function addNewProduct(e) {
     })
     .then(() => {
       renderTable(); // Refresh the product list
-      // Clear the form:
+      resetForm();// Clear the form:
       document.getElementById("nume").value = "";
       document.getElementById("pret").value = "";
       document.getElementById("imageURL").value = "";
@@ -91,3 +103,50 @@ function addNewProduct(e) {
       console.error("Error adding product:", error);
     });
 }
+
+function resetForm() {
+  numeInput.value = "";
+  pretInput.value = "";
+  imageURLInput.value = "";
+  descriptionInput.value = "";
+
+  if (isEditMode) {
+    isEditMode = false;
+    addOrEditBtn.innerHTML = "Adauga Produs";
+  }
+}
+
+
+
+tableBody.addEventListener('click', handleActions);
+
+function handleActions(e) {
+  const clickedElement = e.target;
+  if (clickedElement.parentElement.classList.contains('edit')) {
+
+    productID = getTableRow(clickedElement).dataset.id;
+    fetch(`${URL}/${productID}`)
+      .then((response) => response.json())
+      .then((product) => {
+        console.log(product);
+        numeInput.value = product.nume;
+        pretInput.value = product.pret;
+        imageURLInput.value = product.imageURL;
+        descriptionInput.value = product.detalii;
+      });
+    isEditMode = true;
+    addOrEditBtn.innerHTML = 'Save';
+  }
+}
+
+function getTableRow(editIcon) {
+  return editIcon.parentElement.parentElement.parentElement.parentElement;
+}
+
+
+
+//buton de add product, se transforma in add sau save daca aschimbam id-ul
+//cream o variabila isModEdit in care stocam true daca editam sau false dac adaugam(default value)
+//in momentul in care punem in input datele dintr-un produs care urmeaza sa fie editat, atunci variabila de edit mode se duce la true si i se schimba continutul din add product in save
+//metodele si numele de variabile pentru addNewProduct se transforma in ceva care sa ne duca cu gandul ca si editam, ex: addOrEditBtn
+//la metoda care facea post trebuie sa adaugam o variabila method care va fi fie POST fie PUT in functie de valoarea lui isEditMode folosing ternary operator
