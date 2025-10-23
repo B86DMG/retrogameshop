@@ -18,6 +18,29 @@
       rel="stylesheet"
     />
     <script src="js/app.js" defer></script>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyDD8sayw_6W4jBxAfwl3VcH4Y0XW5Wh9yE",
+        authDomain: "retrogameshop-3d807.firebaseapp.com",
+        projectId: "retrogameshop-3d807",
+        storageBucket: "retrogameshop-3d807.firebasestorage.app",
+        messagingSenderId: "453412511669",
+        appId: "1:453412511669:web:4e48e0a819e30224e503fc",
+        measurementId: "G-KPMQXNKX8G",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
   </head>
   <body>
     <!-- HEADER>>>>> ----->
@@ -40,7 +63,8 @@
       <nav class="navbar">
         <a href="index.html">home</a>
         <a href="#about">about</a>
-        <a href="../retrogameshop/html/">products</a>
+        <a href="html/products.html">products</a>
+        <a href="html/products_firebase.html">products_F</a>
         <!-- <a href="#review">review</a> -->
         <!-- DE VAZUT DACA IL MAI PUN^ -->
         <a href="#contact">contact</a>
@@ -52,7 +76,7 @@
         <div class="user-menu">
           <a href="#" class="fas fa-user" id="user-btn"></a>
           <div class="dropdown-menu" id="user-dropdown">
-            <a href="html/admin.html">Admin</a>
+            <a href="admin_firebase.html">AdminF</a>
             <a href="admin2.html">Admin2</a>
             <a href="#">Profil</a>
             <a href="#">Logout</a>
