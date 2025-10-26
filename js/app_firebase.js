@@ -40,6 +40,7 @@ addBtn.addEventListener("click", async (e) => {
     categorie: document.getElementById("categorie").value,
     subcategorie: document.getElementById("subcategorie").value,
     cantitate: parseInt(document.getElementById("cantitate").value),
+    state: parseInt(document.getElementById("state").value),
   };
 
   try {
@@ -67,6 +68,8 @@ async function displayProducts() {
       <td><img src="${p.imageURL}" alt="${p.nume}" width="50"></td>
       <td>${p.nume}</td>
       <td>${p.pret}</td>
+      <td>${p.description}</td>
+      <td>${p.state}</td>
       <td>
         <button onclick="editProduct('${docSnap.id}')">Edit</button>
         <button onclick="deleteProduct('${docSnap.id}')">Delete</button>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product List - Grid</title>
+    <link rel="stylesheet" href="css/style3.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Product List</h1>
+
+      <!-- Product form păstrat -->
+      <form id="product-form">
+        <input type="text" id="nume" placeholder="Nume produs" required />
+        <input type="text" id="pret" placeholder="Pret" required />
+        <input type="url" id="imageURL" placeholder="Image URL" required />
+        <input
+          type="text"
+          id="description"
+          placeholder="Description"
+          required
+        />
+        <input type="text" id="categorie" placeholder="categorie" required />
+        <input
+          type="text"
+          id="subcategorie"
+          placeholder="subcategorie"
+          required
+        />
+        <input type="number" id="cantitate" placeholder="cantitate" required />
+        <button id="add-btn" class="btn add">Add Product</button>
+      </form>
+
+      <!-- Grid container pentru produse -->
+      <div class="products-grid"></div>
+    </div>
+
+    <script type="module" src="js/app_firebase.js"></script>
+  </body>
+</html>
