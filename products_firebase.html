@@ -3,19 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin - Retro Game Shop (Firebase)</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/admin.css" />
+    <title>Products (Firebase) - Retro Game Shop</title>
+    <!-- Font Awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
     />
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&family=Pixelify+Sans:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/products.css" />
   </head>
 
   <body>
@@ -83,44 +86,76 @@
       </div>
     </header>
 
-    <div class="admin-container">
-      <h1 class="admin-title">Admin Panel <span class="title-accent">(Firebase)</span></h1>
+    <!-- MAIN CONTENT -->
+    <main class="products-main">
+      <section class="products-section">
+        <div class="container">
+          <h1 class="section-title">All Products <span class="title-accent">(Firebase)</span></h1>
+          <div class="product-container"></div>
+        </div>
+      </section>
 
-      <form id="product-form" class="admin-form">
-        <h2>Add/Edit Product</h2>
-        <input type="text" id="nume" placeholder="Nume produs" required />
-        <input type="text" id="pret" placeholder="Pret" required />
-        <input type="url" id="imageURL" placeholder="Image URL" required />
-        <input type="text" id="description" placeholder="Description" required />
-        <input type="text" id="categorie" placeholder="categorie" required />
-        <input type="text" id="subcategorie" placeholder="subcategorie" required />
-        <input type="number" id="cantitate" placeholder="cantitate" required />
-        <input type="number" id="stare" placeholder="stare" required />
-        <button id="add-btn" class="btn btn-primary">Add Product</button>
-      </form>
+      <aside class="products-aside">
+        <h2>Filtre</h2>
 
-      <div class="admin-table-container">
-        <h2>Product List</h2>
-        <table id="products-table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Image</th>
-              <th>Name</th>
-              <th>Price</th>
-              <th>Description</th>
-              <th>State</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- Products will be inserted here -->
-          </tbody>
-        </table>
-      </div>
-    </div>
+        <div class="filter-group">
+          <h3>Categorii</h3>
+          <label>
+            <input type="checkbox" name="category" value="consoles" />
+            Console
+          </label>
+          <label>
+            <input type="checkbox" name="category" value="games" />
+            Jocuri
+          </label>
+          <label>
+            <input type="checkbox" name="category" value="accessories" />
+            Accesorii
+          </label>
+        </div>
 
-    <script type="module" src="js/admin_firebase.js"></script>
+        <div class="filter-group">
+          <h3>Subcategorii</h3>
+          <label>
+            <input type="checkbox" name="subcategory" value="retro" />
+            Retro
+          </label>
+          <label>
+            <input type="checkbox" name="subcategory" value="modern" />
+            Modern
+          </label>
+        </div>
+
+        <div class="filter-group">
+          <h3>Stare</h3>
+          <label>
+            <input type="checkbox" name="condition" value="nou" /> Nou
+          </label>
+          <label>
+            <input type="checkbox" name="condition" value="second-hand" />
+            Second Hand
+          </label>
+        </div>
+
+        <div class="filter-group">
+          <h3>Preț</h3>
+          <label>
+            <input type="checkbox" name="price" value="0-100" /> 0 - 100 RON
+          </label>
+          <label>
+            <input type="checkbox" name="price" value="100-300" /> 100 - 300
+            RON
+          </label>
+          <label>
+            <input type="checkbox" name="price" value="300+" /> 300+ RON
+          </label>
+        </div>
+
+        <button class="apply-filters">Aplică filtre</button>
+      </aside>
+    </main>
+
+    <script type="module" src="js/products_firebase.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>
