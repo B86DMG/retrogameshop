@@ -1,0 +1,24 @@
+# Server files (local development only)
+README-SERVER.md
+START-HERE.html
+start-server.bat
+start-server.ps1
+retro.css
+
+# Backup folder
+retrogameshop_v1_backup/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+
