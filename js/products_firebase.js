@@ -113,17 +113,20 @@ async function displayProducts() {
       return;
     }
 
+    // Store products array for later use
+    window.productsData = products;
+
     container.innerHTML = products
       .map(
-        (p) => `
-        <div class="product-card">
+        (p, index) => `
+        <div class="product-card" data-product-index="${index}">
           <div class="product-image">
               <img src="${p.imageURL || p.image || "product_img/default.jpg"}" alt="${p.nume || p.name || 'Product'}" onerror="this.src='product_img/default.jpg'" />
             <div class="product-actions">
               <button class="action-btn" aria-label="Add to Wishlist">
                 <i class="fas fa-heart"></i>
               </button>
-              <button class="action-btn cart-btn" aria-label="Add to Cart">
+              <button class="action-btn cart-btn" aria-label="Add to Cart" data-product-index="${index}">
                 <i class="fas fa-shopping-cart"></i>
               </button>
               <button class="action-btn" aria-label="Share">
@@ -151,13 +154,17 @@ async function displayProducts() {
       btn.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
-        const productCard = btn.closest(".product-card");
-        const productName =
-          productCard.querySelector(".product-info h3").textContent;
-        const productPrice = productCard.querySelector(".current-price")
-          .textContent;
-
-        addToCart({ name: productName, price: productPrice });
+        const index = parseInt(btn.dataset.productIndex);
+        if (window.productsData && window.productsData[index]) {
+          const p = window.productsData[index];
+          const productData = {
+            name: p.nume || p.name || "Unnamed Product",
+            price: p.pret || p.price || 0,
+            image: p.imageURL || p.image || "product_img/default.jpg",
+            id: p.id || `firebase-${index}`
+          };
+          addToCart(productData);
+        }
       });
     });
   } catch (error) {
@@ -215,24 +222,59 @@ function initUserMenu() {
 
 function addToCart(product) {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  cart.push({
-    ...product,
-    id: Date.now(),
-    quantity: 1,
-  });
+  
+  // Parse price to number if it's a string (use current price if available, otherwise price)
+  const price = typeof product.price === 'string' 
+    ? parseFloat(product.price.replace(/[^\d.-]/g, '')) || 0
+    : (typeof product.price === 'number' ? product.price : 0);
+  
+  // Parse old price if available (for discounted products)
+  const oldPrice = product.oldPrice 
+    ? (typeof product.oldPrice === 'string' 
+        ? parseFloat(product.oldPrice.replace(/[^\d.-]/g, '')) || null
+        : (typeof product.oldPrice === 'number' ? product.oldPrice : null))
+    : null;
+  
+  // Check if product already exists in cart (by name or id)
+  const existingItemIndex = cart.findIndex(
+    item => item.name === product.name || item.id === product.id
+  );
+  
+  if (existingItemIndex !== -1) {
+    // Product exists, increase quantity
+    cart[existingItemIndex].quantity = (cart[existingItemIndex].quantity || 1) + 1;
+    showNotification(`${product.name} quantity increased!`);
+  } else {
+    // New product, add to cart
+    const cartItem = {
+      name: product.name,
+      price: price,
+      image: product.image || product.imageURL || 'product_img/default.jpg',
+      id: product.id || Date.now(),
+      quantity: 1,
+    };
+    
+    // Add old price if available (for displaying discount)
+    if (oldPrice) {
+      cartItem.oldPrice = oldPrice;
+    }
+    
+    cart.push(cartItem);
+    showNotification(`${product.name} added to cart!`);
+  }
+  
   localStorage.setItem("cart", JSON.stringify(cart));
 
   // Update cart badge on all pages
   updateCartBadge();
-
-  showNotification(`${product.name} added to cart!`);
 }
 
 function updateCartBadge() {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const totalQuantity = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
   const cartBadges = document.querySelectorAll(".cart-badge");
   cartBadges.forEach((badge) => {
-    badge.textContent = cart.length;
+    badge.textContent = totalQuantity;
   });
 }
 

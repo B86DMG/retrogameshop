@@ -2,9 +2,18 @@
 // PRODUCTS PAGE - MOCK API
 // ============================================
 
+// Prevent app.js from interfering - set flag immediately
+window.PRODUCTS_PAGE_LOADED = true;
+
+console.log("✅ products.js loaded successfully!");
+console.log("📍 Current page:", window.location.pathname);
+
 const PRODUCTS_API_URL = "https://68e3eecf8e116898997a7c31.mockapi.io/products";
 
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("✅ DOM Content Loaded - Initializing products page...");
+  console.log("📦 Products container:", document.querySelector(".product-container"));
+  
   displayProducts();
   initFilters();
   initUserMenu();
@@ -12,11 +21,14 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function displayProducts() {
+  console.log("🔄 displayProducts() called");
   const container = document.querySelector(".product-container");
   if (!container) {
     console.error("❌ Could not find .product-container element!");
+    console.error("❌ Available containers:", document.querySelectorAll("[class*='product']"));
     return;
   }
+  console.log("✅ Found product container:", container);
 
   container.innerHTML = "<p style='text-align: center; color: var(--neon-cyan);'>Loading products...</p>";
 
@@ -33,17 +45,27 @@ function displayProducts() {
         return;
       }
 
+      // Store products array for later use
+      window.productsData = products;
+
       container.innerHTML = products
         .map(
-          (p) => `
-          <div class="product-card">
+          (p, index) => {
+            const productData = {
+              name: p.nume || 'Unnamed Product',
+              price: p.pret || 0,
+              image: p.imageURL || 'product_img/default.jpg',
+              id: p.id || `mock-${index}`
+            };
+            return `
+          <div class="product-card" data-product-index="${index}">
             <div class="product-image">
               <img src="${p.imageURL || 'product_img/default.jpg'}" alt="${p.nume || 'Product'}" onerror="this.src='product_img/default.jpg'" />
               <div class="product-actions">
                 <button class="action-btn" aria-label="Add to Wishlist">
                   <i class="fas fa-heart"></i>
                 </button>
-                <button class="action-btn cart-btn" aria-label="Add to Cart">
+                <button class="action-btn cart-btn" aria-label="Add to Cart" data-product-index="${index}">
                   <i class="fas fa-shopping-cart"></i>
                 </button>
                 <button class="action-btn" aria-label="Share">
@@ -58,28 +80,81 @@ function displayProducts() {
               </div>
             </div>
           </div>
-        `
+        `;
+          }
         )
         .join("");
 
       // Add event listeners to cart buttons
       const cartButtons = document.querySelectorAll(".cart-btn");
+      console.log(`✅ Found ${cartButtons.length} cart buttons`);
+      
+      // Add event listeners to all action buttons
+      const actionButtons = document.querySelectorAll(".action-btn");
+      console.log(`✅ Found ${actionButtons.length} action buttons`);
+      
       cartButtons.forEach((btn) => {
         btn.addEventListener("click", (e) => {
           e.preventDefault();
           e.stopPropagation();
-          const productCard = btn.closest(".product-card");
-          const productName =
-            productCard.querySelector(".product-info h3").textContent;
-          const productPrice = productCard.querySelector(".current-price")
-            .textContent;
-
-          addToCart({ name: productName, price: productPrice });
+          const index = parseInt(btn.dataset.productIndex);
+          if (window.productsData && window.productsData[index]) {
+            const p = window.productsData[index];
+            const productData = {
+              name: p.nume || 'Unnamed Product',
+              price: p.pret || 0,
+              image: p.imageURL || 'product_img/default.jpg',
+              id: p.id || `mock-${index}`
+            };
+            console.log("🛒 Adding to cart:", productData);
+            addToCart(productData);
+          }
         });
       });
+      
+      // Add event listeners for wishlist buttons
+      const wishlistButtons = document.querySelectorAll(".action-btn:not(.cart-btn)");
+      wishlistButtons.forEach((btn, idx) => {
+        if (!btn.classList.contains("cart-btn") && btn.querySelector(".fa-heart")) {
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log("❤️ Wishlist button clicked");
+            // TODO: Implement wishlist functionality
+          });
+        }
+      });
+      
+      console.log("✅ All event listeners attached");
+      
+      // Verify actions are in DOM
+      setTimeout(() => {
+        const actionsCheck = document.querySelectorAll(".product-actions");
+        const buttonsCheck = document.querySelectorAll(".action-btn");
+        console.log(`🔍 Verification: Found ${actionsCheck.length} product-actions containers`);
+        console.log(`🔍 Verification: Found ${buttonsCheck.length} action buttons in DOM`);
+        
+        if (actionsCheck.length === 0) {
+          console.error("❌ ERROR: No .product-actions found in DOM!");
+          console.error("❌ Generated HTML sample:", container.innerHTML.substring(0, 500));
+        }
+        
+        // Check CSS visibility
+        actionsCheck.forEach((action, idx) => {
+          const style = window.getComputedStyle(action);
+          console.log(`🔍 Action ${idx}:`, {
+            display: style.display,
+            opacity: style.opacity,
+            visibility: style.visibility,
+            zIndex: style.zIndex,
+            position: style.position
+          });
+        });
+      }, 100);
     })
     .catch((err) => {
-      console.error("Error loading products:", err);
+      console.error("❌ Error loading products:", err);
+      console.error("❌ Error details:", err.stack);
       container.innerHTML = `<p style='text-align: center; color: var(--neon-pink); padding: 2rem;'>Error loading products: ${err.message}. Please check your internet connection and try again.</p>`;
     });
 }
@@ -119,24 +194,59 @@ function initUserMenu() {
 
 function addToCart(product) {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  cart.push({
-    ...product,
-    id: Date.now(),
-    quantity: 1,
-  });
+  
+  // Parse price to number if it's a string (use current price if available, otherwise price)
+  const price = typeof product.price === 'string' 
+    ? parseFloat(product.price.replace(/[^\d.-]/g, '')) || 0
+    : (typeof product.price === 'number' ? product.price : 0);
+  
+  // Parse old price if available (for discounted products)
+  const oldPrice = product.oldPrice 
+    ? (typeof product.oldPrice === 'string' 
+        ? parseFloat(product.oldPrice.replace(/[^\d.-]/g, '')) || null
+        : (typeof product.oldPrice === 'number' ? product.oldPrice : null))
+    : null;
+  
+  // Check if product already exists in cart (by name or id)
+  const existingItemIndex = cart.findIndex(
+    item => item.name === product.name || item.id === product.id
+  );
+  
+  if (existingItemIndex !== -1) {
+    // Product exists, increase quantity
+    cart[existingItemIndex].quantity = (cart[existingItemIndex].quantity || 1) + 1;
+    showNotification(`${product.name} quantity increased!`);
+  } else {
+    // New product, add to cart
+    const cartItem = {
+      name: product.name,
+      price: price,
+      image: product.image || product.imageURL || 'product_img/default.jpg',
+      id: product.id || Date.now(),
+      quantity: 1,
+    };
+    
+    // Add old price if available (for displaying discount)
+    if (oldPrice) {
+      cartItem.oldPrice = oldPrice;
+    }
+    
+    cart.push(cartItem);
+    showNotification(`${product.name} added to cart!`);
+  }
+  
   localStorage.setItem("cart", JSON.stringify(cart));
 
   // Update cart badge on all pages
   updateCartBadge();
-
-  showNotification(`${product.name} added to cart!`);
 }
 
 function updateCartBadge() {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const totalQuantity = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
   const cartBadges = document.querySelectorAll(".cart-badge");
   cartBadges.forEach((badge) => {
-    badge.textContent = cart.length;
+    badge.textContent = totalQuantity;
   });
 }
 

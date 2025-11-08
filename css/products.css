@@ -26,6 +26,7 @@
   height: fit-content;
   position: sticky;
   top: 10rem;
+  margin-top: calc(3.5rem + var(--spacing-xl));
   box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
 }
 
@@ -104,6 +105,11 @@
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: var(--spacing-md);
   margin-top: var(--spacing-md);
+}
+
+/* Ensure product actions are visible */
+.product-container .product-card .product-actions {
+  display: flex !important;
 }
 
 /* Responsive */

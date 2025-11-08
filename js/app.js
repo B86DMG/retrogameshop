@@ -48,46 +48,19 @@
 //     .catch((err) => console.error("Error loading products:", err));
 // }
 
-// V2
-window.addEventListener("DOMContentLoaded", displayProducts);
+// V2 - DISABLED: This function is now handled by products.js for products.html
+// The displayProducts() function in app.js has been disabled to avoid conflicts
+// with products.js which handles product display on products.html and products_firebase.html
 
-const URL = "https://68e3eecf8e116898997a7c31.mockapi.io/products";
+// Check if we're on a products page - if so, don't run the old displayProducts
+const isProductsPage = window.location.pathname.includes('products.html') || 
+                       window.location.pathname.includes('products_firebase.html') ||
+                       window.PRODUCTS_PAGE_LOADED;
 
-function displayProducts() {
-  fetch(URL)
-    .then((res) => {
-      if (!res.ok) throw new Error("Network error!");
-      return res.json();
-    })
-    .then((products) => {
-      const container = document.querySelector(".product-container");
-      if (!container) {
-        console.error("❌ Could not find .product-container element!");
-        return;
-      }
-
-      container.innerHTML = products
-        .map(
-          (p) => `
-          <div class="product-card">
-            <div class="product-image">
-              <img src="${p.imageURL}" alt="${p.nume}">
-              <div class="product-icons">
-                <a href="#" class="icon-btn"><i class="fas fa-heart"></i></a>
-                <a href="#" class="icon-btn cart-btn">🛒</a>
-                <a href="#" class="icon-btn"><i class="fas fa-share"></i></a>
-              </div>
-            </div>
-            <div class="product-info">
-              <h3>${p.nume}</h3>
-              <p class="price">${p.pret} lei</p>
-            </div>
-          </div>
-        `
-        )
-        .join("");
-    })
-    .catch((err) => console.error("Error loading products:", err));
+if (!isProductsPage) {
+  // Only define displayProducts for non-products pages if needed
+  // Currently disabled to avoid conflicts
+  console.log("ℹ️ app.js: Skipping displayProducts (handled by products.js on product pages)");
 }
 
 document.addEventListener("DOMContentLoaded", () => {
